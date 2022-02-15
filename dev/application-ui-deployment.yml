@@ -26,12 +26,6 @@ spec:
           image: shivamsinghgslab/application-ui-k8s
           ports:
             - containerPort: 80
-          env:
-           - name: pod_env_variable
-             valueFrom:
-                configMapKeyRef:
-                  name: leaveplanner-config
-                  key: env
   replicas: 3
   selector:
     matchLabels:
