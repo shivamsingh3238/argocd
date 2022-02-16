@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: myapp-argocd
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/myimage.update-strategy: latest
 spec:
   project: default
   source:
