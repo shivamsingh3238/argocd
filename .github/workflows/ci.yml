@@ -8,11 +8,18 @@ on:
 
 jobs:
 
-  build:
+  build-docker-image:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: shivamsinghgslab/application-ui-k8s
+        registry: docker.io
+        dockerfile: Dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
