@@ -37,7 +37,8 @@ jobs:
           version=$(cat ./dev/application/values.yaml | grep tag: | awk '{print $2}')
           git_hash=$(git rev-parse --short "$GITHUB_SHA")
           tag=${GITHUB_REF##*/}-$git_hash
-          sed -i 's/$version/$tag/' ./dev/application/values.yaml
+          echo $tag
+          sed -i "s/$version/$tag/" ./dev/application/values.yaml
 
     - name: Commit and push changes
       uses: devops-infra/action-commit-push@v0.3
