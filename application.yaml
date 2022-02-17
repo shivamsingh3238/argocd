@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/shivamsingh3238/argocd.git
     targetRevision: HEAD
-    path: dev
+    path: dev/application/
   destination:
     server: https://kubernetes.default.svc
     namespace: leaveplanner
