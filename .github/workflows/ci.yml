@@ -23,12 +23,12 @@ jobs:
         version=${GITHUB_REF##*/}-$git_hash
         echo $version
 
-    # - name: Build the Docker image
-    #   uses: mr-smithers-excellent/docker-build-push@v5
-    #   with:
-    #     image: shivamsinghgslab/application-ui-k8s
-    #     registry: docker.io
-    #     dockerfile: Dockerfile
-    #     tags: ${{ steps.v1.version }}
-    #     username: ${{ secrets.DOCKER_USERNAME }}
-    #     password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build the Docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: shivamsinghgslab/application-ui-k8s
+        registry: docker.io
+        dockerfile: Dockerfile
+        tags: ${{ steps.v1.version }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
