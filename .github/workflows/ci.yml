@@ -25,7 +25,7 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
 
-    # - name: build and push docker image
+    # - name: build and push docker images
     #   id: image-push
     #   env:
     #     ECR_REGISTRY: ${{ steps.login-docker.outputs.registry }}
