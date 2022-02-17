@@ -21,7 +21,6 @@ jobs:
       run: |
         git_hash=$(git rev-parse --short "$GITHUB_SHA")
         versions=${GITHUB_REF##*/}-$git_hash
-        echo $version
 
     # - name: Build the Docker image
     #   uses: mr-smithers-excellent/docker-build-push@v5
@@ -36,6 +35,7 @@ jobs:
     - name: Update Version
       run: |
           version=$(cat ./dev/application/values.yaml | grep tag: | awk '{print $2}')
+          echo ${{ steps.v1.versions }}
           sed -i 's/$version/${{ steps.v1.versions }}/' ./dev/application/values.yaml
 
     - name: Commit and push changes
