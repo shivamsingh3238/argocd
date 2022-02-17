@@ -8,7 +8,7 @@ image:
   repository: shivamsinghgslab/application-ui-k8s
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: master-49c5b15
+  tag: master-2abe7a2
 
 imagePullSecrets: []
 nameOverride: ""
