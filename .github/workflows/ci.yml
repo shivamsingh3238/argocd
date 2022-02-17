@@ -38,6 +38,7 @@ jobs:
           version=$(cat ./dev/application/values.yaml | grep tag: | awk '{print $2}')
           echo $version
           tag= ${{ steps.v1.versions }}
+          echo $tag
           sed -i 's/$version/$tag' ./dev/application/values.yaml
 
     - name: Commit and push changes
