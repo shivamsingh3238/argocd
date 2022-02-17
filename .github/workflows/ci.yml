@@ -35,8 +35,8 @@ jobs:
 
     - name: Update Version
       run: |
-          version=$(cat /dev/application/values.yaml | grep tag: | awk '{print $2}')
-          sed -i "s/$version/${{ steps.v1.version }}" /dev/application/values.yaml
+          version=$(cat ./dev/application/values.yaml | grep tag: | awk '{print $2}')
+          sed -i "s/$version/${{ steps.v1.version }}" ./dev/application/values.yaml
 
     - name: Commit and push changes
       uses: devops-infra/action-commit-push@v0.3
