@@ -20,7 +20,7 @@ jobs:
       id: v1 
       run: |
         git_hash=$(git rev-parse --short "$GITHUB_SHA")
-        version=${GITHUB_REF##*/}-$git_hash
+        versions=${GITHUB_REF##*/}-$git_hash
         echo $version
 
     # - name: Build the Docker image
@@ -29,7 +29,7 @@ jobs:
     #     image: shivamsinghgslab/application-ui-k8s
     #     registry: docker.io
     #     dockerfile: Dockerfile
-    #     tags: ${{ steps.v1.version }}
+    #     tags: ${{ steps.v1.versions }}
     #     username: ${{ secrets.DOCKER_USERNAME }}
     #     password: ${{ secrets.DOCKER_PASSWORD }}
 
@@ -37,7 +37,8 @@ jobs:
       run: |
           version=$(cat ./dev/application/values.yaml | grep tag: | awk '{print $2}')
           echo $version
-          sed -i "/$version/${{ steps.v1.version }}" ./dev/application/values.yaml
+          tag= ${{ steps.v1.versions }}
+          sed -i 's/$version/$tag' ./dev/application/values.yaml
 
     - name: Commit and push changes
       uses: devops-infra/action-commit-push@v0.3
