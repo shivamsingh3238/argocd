@@ -7,7 +7,7 @@ replicaCount: 4
 image:
   repository: shivamsinghgslab/application-ui-k8s
   pullPolicy: IfNotPresent
-  tag: master-754a2bf
+  tag: master-ae98ab9
 
 imagePullSecrets: []
 nameOverride: ""
